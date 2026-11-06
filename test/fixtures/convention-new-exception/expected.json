@@ -1,0 +1,72 @@
+{
+  "findings": [
+    {
+      "advice": "Copy `src/hooks/me/useSystemicIssuePreferences.ts` instead.",
+      "data": {
+        "example": "src/hooks/me/useSystemicIssuePreferences.ts",
+        "follow": 206,
+        "patternId": "layer:hook>service",
+        "rule": "Services never import hooks: all 206 imports between them go hooks → services.",
+        "strength": "rule",
+        "total": 208,
+        "truncated": false
+      },
+      "detail": "breaks it.",
+      "file": "src/services/foo.ts",
+      "inDiff": true,
+      "kind": "convention-broken",
+      "severity": "medium",
+      "title": "**Hooks use services, never the other way round** (206 of 208 imports follow it)"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 2,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 2,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 1,
+      "delta": "+1",
+      "head": 2,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

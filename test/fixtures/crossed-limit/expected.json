@@ -1,0 +1,91 @@
+{
+  "findings": [
+    {
+      "data": {
+        "isNew": false,
+        "issues": [],
+        "metrics": [
+          {
+            "base": 11,
+            "head": 19,
+            "limit": 15,
+            "name": "cognitive"
+          },
+          {
+            "base": 3,
+            "head": 5,
+            "limit": 4,
+            "name": "nesting"
+          }
+        ],
+        "name": "handleBulkEscalate",
+        "newFile": false,
+        "ordinal": 0,
+        "time": null,
+        "wasWithinLimits": false
+      },
+      "file": "src/pages/ManagerInbox.tsx",
+      "inDiff": true,
+      "kind": "function-regression",
+      "line": 40,
+      "severity": "medium",
+      "title": "`handleBulkEscalate` — cognitive 11 → **19** (limit 15), nesting 3 → **5** (limit 4)"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 1,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 1,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [
+    {
+      "file": "src/pages/ManagerInbox.tsx",
+      "line": 92,
+      "text": "render over cognitive"
+    }
+  ],
+  "summary": [
+    {
+      "base": 30,
+      "delta": "+8",
+      "head": 38,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 1,
+      "delta": "+1",
+      "head": 2,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

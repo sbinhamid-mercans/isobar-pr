@@ -1,0 +1,29 @@
+{
+  "name": "isobar-pr",
+  "version": "1.0.0",
+  "description": "Pressure delta for every pull request: diff two isobar maps (merge base vs PR) into a sticky comment, inline annotations and an optional gate.",
+  "license": "MIT",
+  "author": "Syed Huzaifa",
+  "repository": { "type": "git", "url": "https://github.com/sbinhamid-mercans/isobar-pr.git" },
+  "homepage": "https://github.com/sbinhamid-mercans/isobar-pr#readme",
+  "keywords": ["isobar", "github-action", "code-quality", "pull-request", "complexity"],
+  "type": "module",
+  "bin": { "isobar-pr": "dist/cli.js" },
+  "files": ["dist", "action.yml", "README.md", "LICENSE"],
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:slow": "ISOBAR_PR_SLOW=1 vitest run",
+    "check:dist": "npm run build && git diff --exit-code -- dist && test -z \"$(git status --porcelain --untracked-files=all -- dist)\"",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

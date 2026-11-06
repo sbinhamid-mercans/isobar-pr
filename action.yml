@@ -1,0 +1,136 @@
+name: isobar-pr
+description: Pressure delta for every pull request — diff two isobar maps (merge base vs PR) into a sticky comment, inline annotations and an optional gate.
+author: Syed Huzaifa
+branding:
+  icon: wind
+  color: purple
+
+inputs:
+  base-ref:
+    description: Branch to diff against. Defaults to the PR's base branch, which is empty outside pull_request events; set it on push or workflow_dispatch.
+    default: '${{ github.base_ref }}'
+  fail-on:
+    description: "Gate policy: none | serious-security | limit-crossed | any (any also fails when a base hotspot is touched)."
+    default: none
+  isobar-version:
+    description: Exact isobar version; both sides use it.
+    default: "0.7.1"
+  scope:
+    description: Only analyze this folder of the repository (monorepos).
+    default: ""
+  comment:
+    description: Post or update the sticky PR comment.
+    default: "true"
+  annotations:
+    description: Emit inline annotations on changed lines.
+    default: "true"
+  report-uncalled-routes:
+    description: Also report new routes no client in this repo calls.
+    default: "false"
+  github-token:
+    description: Token used to post the comment.
+    default: '${{ github.token }}'
+
+outputs:
+  gate:
+    description: pass or fail
+    value: '${{ steps.compare.outputs.gate }}'
+  summary:
+    description: One-line summary of the delta
+    value: '${{ steps.compare.outputs.summary }}'
+  report-json:
+    description: Path to report.json
+    value: '${{ steps.compare.outputs.report-json }}'
+
+runs:
+  using: composite
+  steps:
+    - name: Ensure git history
+      shell: bash
+      env:
+        BASE_REF: ${{ inputs.base-ref }}
+      run: |
+        if [ -z "$BASE_REF" ]; then
+          echo "::error title=isobar-pr::base-ref is empty: github.base_ref is only set on pull_request events. On push or workflow_dispatch, pass it (with: base-ref: main)."
+          exit 1
+        fi
+        if ! git rev-parse --git-dir >/dev/null 2>&1; then
+          echo "::error title=isobar-pr::$PWD is not a git repository. Run actions/checkout (with fetch-depth: 0) before isobar-pr."
+          exit 1
+        fi
+        if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+          if ! git fetch --unshallow --no-tags origin; then
+            echo "::error title=isobar-pr::could not fetch history (private repo with persist-credentials: false?). Check out with fetch-depth: 0."
+            exit 1
+          fi
+        fi
+        if ! git fetch --no-tags origin "+refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"; then
+          echo "::warning title=isobar-pr::could not fetch branch ${BASE_REF} from origin; comparing against the ref as it is"
+        fi
+
+    - uses: actions/setup-node@v5
+      with:
+        node-version: 22
+        package-manager-cache: false
+
+    - name: Compare
+      id: compare
+      shell: bash
+      env:
+        BASE_REF: ${{ inputs.base-ref }}
+        ISOBAR_VERSION: ${{ inputs.isobar-version }}
+        FAIL_ON: ${{ inputs.fail-on }}
+        SCOPE: ${{ inputs.scope }}
+        UNCALLED: ${{ inputs.report-uncalled-routes }}
+      run: |
+        ARGS=(compare "--base-ref=$BASE_REF" "--isobar-version=$ISOBAR_VERSION" "--fail-on=$FAIL_ON" --format all --out "$RUNNER_TEMP/isobar-pr" --gate-output)
+        if [ -n "$SCOPE" ]; then ARGS+=("--scope=$SCOPE"); fi
+        if [ "$UNCALLED" = "true" ]; then ARGS+=(--report-uncalled-routes); fi
+        node "$GITHUB_ACTION_PATH/dist/cli.js" "${ARGS[@]}"
+
+    - name: Inline annotations
+      if: inputs.annotations == 'true'
+      shell: bash
+      run: cat "$RUNNER_TEMP/isobar-pr/annotations.txt"
+
+    - name: Job summary
+      shell: bash
+      run: cat "$RUNNER_TEMP/isobar-pr/summary.md" >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Sticky comment
+      if: inputs.comment == 'true' && github.event_name == 'pull_request'
+      shell: bash
+      continue-on-error: true
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+        REPO: ${{ github.repository }}
+        PR: ${{ github.event.pull_request.number }}
+      run: |
+        BODY="$RUNNER_TEMP/isobar-pr/report.md"
+        skip() {
+          echo "::notice title=isobar-pr::$1; comment skipped. A fork PR's token is read-only; the annotations and job summary still work."
+          exit 0
+        }
+        # Our comments start with the marker line; matching the start never touches a human comment that quotes it.
+        if ! LIST=$(gh api "repos/$REPO/issues/$PR/comments" --paginate --jq '.[] | select((.body // "") | startswith("<!-- isobar-pr -->")) | .id'); then
+          skip "could not list the PR's comments"
+        fi
+        read -r -a IDS <<< "${LIST//$'\n'/ }"
+        if [ "${#IDS[@]}" -eq 0 ]; then
+          gh api -X POST "repos/$REPO/issues/$PR/comments" -F body=@"$BODY" --silent || skip "could not post the comment"
+        else
+          gh api -X PATCH "repos/$REPO/issues/comments/${IDS[0]}" -F body=@"$BODY" --silent || skip "could not update comment ${IDS[0]}"
+          for ID in "${IDS[@]:1}"; do
+            gh api -X DELETE "repos/$REPO/issues/comments/$ID" --silent || echo "::notice title=isobar-pr::could not delete duplicate comment $ID"
+          done
+        fi
+
+    - name: Gate
+      if: steps.compare.outputs.gate == 'fail'
+      shell: bash
+      env:
+        FAIL_ON: ${{ inputs.fail-on }}
+        SUMMARY: ${{ steps.compare.outputs.summary }}
+      run: |
+        echo "::error title=isobar-pr::gate failed (fail-on: $FAIL_ON): $SUMMARY"
+        exit 1

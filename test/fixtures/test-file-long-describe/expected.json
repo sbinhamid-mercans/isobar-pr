@@ -1,0 +1,79 @@
+{
+  "findings": [
+    {
+      "data": {
+        "isNew": false,
+        "issues": [],
+        "metrics": [
+          {
+            "base": 9,
+            "head": 18,
+            "limit": 15,
+            "name": "cognitive"
+          }
+        ],
+        "name": "describe callback",
+        "newFile": false,
+        "ordinal": 0,
+        "time": null,
+        "wasWithinLimits": false
+      },
+      "file": "src/lib/beta.test.ts",
+      "inDiff": true,
+      "kind": "function-regression",
+      "line": 12,
+      "severity": "medium",
+      "title": "`describe callback` — cognitive 9 → **18** (limit 15)"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 2,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 2,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 13,
+      "delta": "+9",
+      "head": 22,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 0,
+      "delta": "+1",
+      "head": 1,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

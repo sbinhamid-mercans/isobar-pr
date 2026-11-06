@@ -1,0 +1,72 @@
+{
+  "findings": [
+    {
+      "data": {
+        "approximate": true,
+        "issues": [],
+        "metrics": [],
+        "name": "Dashboard › useEffect callback",
+        "overBase": 1,
+        "overHead": 2,
+        "time": null
+      },
+      "detail": "approximate match: the number of functions with this name changed",
+      "file": "src/components/Dashboard.tsx",
+      "inDiff": true,
+      "kind": "function-regression",
+      "line": 30,
+      "severity": "medium",
+      "title": "`Dashboard › useEffect callback` ×3 — 2 over a limit, was 1"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 1,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 1,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 23,
+      "delta": "+5",
+      "head": 28,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 1,
+      "delta": "+1",
+      "head": 2,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

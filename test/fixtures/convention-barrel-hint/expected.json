@@ -1,0 +1,72 @@
+{
+  "findings": [
+    {
+      "advice": "Import through `src/api/core/index.ts` instead.",
+      "data": {
+        "example": "src/api/core/index.ts",
+        "follow": 73,
+        "patternId": "barrel:src/api/core",
+        "rule": "Other folders import src/api/core/ through index.ts, not its individual files: 73 of 80 imports.",
+        "strength": "rule",
+        "total": 81,
+        "truncated": false
+      },
+      "detail": "breaks it.",
+      "file": "src/hooks/organizations/useCreateOrganization.ts",
+      "inDiff": true,
+      "kind": "convention-broken",
+      "severity": "medium",
+      "title": "**Import src/api/core/ through its index file** (73 of 81 imports follow it)"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 1,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 1,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 0,
+      "delta": "+2",
+      "head": 2,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "+1",
+      "head": 1,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

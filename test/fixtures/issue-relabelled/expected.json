@@ -1,0 +1,118 @@
+{
+  "findings": [
+    {
+      "advice": "Split it into steps: give each block that does one job its own well-named function.",
+      "data": {
+        "isNew": false,
+        "issues": [
+          {
+            "how": "Split it into steps: give each block that does one job its own well-named function.",
+            "kind": "logic",
+            "severity": "high",
+            "title": "Too much logic in one function",
+            "why": ""
+          }
+        ],
+        "metrics": [
+          {
+            "base": 15,
+            "head": 18,
+            "limit": 15,
+            "name": "cognitive"
+          }
+        ],
+        "name": "showErrorToast",
+        "newFile": false,
+        "ordinal": 0,
+        "time": null,
+        "wasWithinLimits": false
+      },
+      "file": "src/api/errors.ts",
+      "inDiff": true,
+      "kind": "function-regression",
+      "line": 544,
+      "severity": "high",
+      "title": "`showErrorToast` — cognitive 15 → **18** (limit 15)"
+    },
+    {
+      "data": {
+        "issues": [
+          {
+            "how": "Split it into steps: give each block that does one job its own well-named function.",
+            "kind": "logic",
+            "severity": "high",
+            "title": "Too much logic in one function",
+            "why": ""
+          }
+        ],
+        "metrics": [
+          {
+            "base": 18,
+            "head": 12,
+            "limit": 15,
+            "name": "cognitive"
+          }
+        ],
+        "name": "runRequest",
+        "ordinal": 0,
+        "time": null
+      },
+      "file": "src/api/client.ts",
+      "inDiff": true,
+      "kind": "function-improved",
+      "line": 339,
+      "severity": "improved",
+      "title": "`runRequest` — cognitive 18 → 12, now within limit 15"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 2,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 2,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 33,
+      "delta": "-3",
+      "head": 30,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 2,
+      "delta": "0",
+      "head": 2,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "findings": [],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 2,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 2,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "+1",
+      "head": 1,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

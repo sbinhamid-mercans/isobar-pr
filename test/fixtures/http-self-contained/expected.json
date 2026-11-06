@@ -1,0 +1,73 @@
+{
+  "findings": [
+    {
+      "data": {
+        "method": "GET",
+        "path": "/api/orders/export"
+      },
+      "file": "src/api/orders.ts",
+      "inDiff": true,
+      "kind": "http-unmatched-call",
+      "line": 40,
+      "severity": "medium",
+      "title": "`GET /api/orders/export` has no matching route"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 2,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 2,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": true,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    },
+    {
+      "base": 1,
+      "delta": "+1",
+      "head": 2,
+      "key": "http-unmatched",
+      "label": "HTTP calls with no route"
+    }
+  ]
+}

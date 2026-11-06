@@ -1,0 +1,73 @@
+{
+  "findings": [
+    {
+      "data": {
+        "added": 1,
+        "code": "em.createNativeQuery(\"… \" + where)",
+        "level": "serious",
+        "lines": [
+          450
+        ],
+        "text": "SQL is built by inserting values into the query text, which allows SQL injection. Pass the values as query parameters instead.",
+        "truncated": false
+      },
+      "detail": "1 more occurrence (2 → 3), at L450",
+      "file": "src/main/java/com/eq/frip/repository/inbox/InboxScopeRepositoryImpl.java",
+      "inDiff": true,
+      "kind": "security-grew",
+      "line": 450,
+      "severity": "serious",
+      "title": "**serious** — SQL is built by inserting values into the query text, which allows SQL injection. Pass the values as query parameters instead."
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 1,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 1,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "2 / 0",
+      "delta": "+1 / 0",
+      "head": "3 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

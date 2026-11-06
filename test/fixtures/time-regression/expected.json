@@ -1,0 +1,87 @@
+{
+  "findings": [
+    {
+      "advice": "Build a Map of users by id first.",
+      "data": {
+        "isNew": false,
+        "issues": [
+          {
+            "how": "Build a Map of users by id first.",
+            "kind": "scan-in-loop",
+            "severity": "high",
+            "title": "Lookup inside a loop",
+            "why": "Each order scans the whole users array."
+          }
+        ],
+        "metrics": [],
+        "name": "reconcile",
+        "newFile": false,
+        "ordinal": 0,
+        "time": {
+          "base": "O(n)",
+          "head": "O(n·m)",
+          "why": [
+            "L58: users.find() inside the loop over orders"
+          ]
+        },
+        "wasWithinLimits": false
+      },
+      "file": "src/services/orders.ts",
+      "inDiff": true,
+      "kind": "function-regression",
+      "line": 41,
+      "severity": "high",
+      "title": "`reconcile` — O(n) → **O(n·m)** (L58: users.find() inside the loop over orders)"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 1,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 1,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 9,
+      "delta": "+3",
+      "head": 12,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

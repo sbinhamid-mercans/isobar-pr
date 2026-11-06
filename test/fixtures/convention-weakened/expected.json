@@ -1,0 +1,88 @@
+{
+  "findings": [
+    {
+      "advice": "Copy `src/hooks/useX.ts` instead.",
+      "data": {
+        "example": "src/hooks/useX.ts",
+        "follow": 95,
+        "patternId": "alias:@/",
+        "rule": "Imports from another folder use the @/ path alias, not ../ paths: 95 of 100.",
+        "strength": "mostly",
+        "total": 112,
+        "truncated": false
+      },
+      "detail": "breaks it.",
+      "file": "src/new.ts",
+      "inDiff": true,
+      "kind": "convention-broken",
+      "severity": "low",
+      "title": "**Imports from another folder use the \\@/ path alias** (95 of 112 imports follow it)"
+    },
+    {
+      "data": {
+        "baseFollow": 95,
+        "baseTotal": 100,
+        "from": "rule",
+        "headFollow": 95,
+        "headTotal": 112,
+        "patternId": "alias:@/",
+        "to": "mostly"
+      },
+      "file": "src/new.ts",
+      "inDiff": true,
+      "kind": "convention-weakened",
+      "severity": "low",
+      "title": "**Imports from another folder use the \\@/ path alias** weakened: rule → mostly (95 of 100 → 95 of 112 imports)"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 1,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 1,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "+1",
+      "head": 1,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

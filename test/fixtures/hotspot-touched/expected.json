@@ -1,0 +1,90 @@
+{
+  "findings": [
+    {
+      "advice": "Keep changes small and tested.",
+      "data": {
+        "cognitive": 52,
+        "commits": 49,
+        "rank": 1,
+        "score": 0.583,
+        "testImporters": 0
+      },
+      "file": "src/pages/manager-inbox/ManagerInbox.tsx",
+      "inDiff": true,
+      "kind": "hotspot-touched",
+      "severity": "medium",
+      "title": "base hotspot rank **1** (49 commits, total cognitive 52), imported by 0 tests"
+    },
+    {
+      "advice": "Keep changes small and tested.",
+      "data": {
+        "cognitive": 13,
+        "commits": 61,
+        "rank": 2,
+        "score": 0.423,
+        "testImporters": 1
+      },
+      "file": "src/components/inbox/MessageView.tsx",
+      "inDiff": true,
+      "kind": "hotspot-touched",
+      "severity": "low",
+      "title": "base hotspot rank **2** (61 commits, total cognitive 13), imported by 1 test"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 3,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 3,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [
+    {
+      "file": "src/pages/manager-inbox/ManagerInbox.tsx",
+      "line": 1,
+      "text": "ManagerInbox over cognitive, lines"
+    }
+  ],
+  "summary": [
+    {
+      "base": 67,
+      "delta": "0",
+      "head": 67,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 1,
+      "delta": "0",
+      "head": 1,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

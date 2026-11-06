@@ -1,0 +1,76 @@
+{
+  "findings": [
+    {
+      "data": {
+        "issues": [],
+        "metrics": [
+          {
+            "base": 22,
+            "head": 13,
+            "limit": 15,
+            "name": "cognitive"
+          }
+        ],
+        "name": "render",
+        "ordinal": 0,
+        "time": null
+      },
+      "file": "src/components/MessageView.tsx",
+      "inDiff": true,
+      "kind": "function-improved",
+      "line": 10,
+      "severity": "improved",
+      "title": "`render` — cognitive 22 → 13, now within limit 15"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 1,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 1,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 22,
+      "delta": "-9",
+      "head": 13,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 1,
+      "delta": "-1",
+      "head": 0,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

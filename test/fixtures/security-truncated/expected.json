@@ -1,0 +1,101 @@
+{
+  "findings": [
+    {
+      "data": {
+        "code": "const token = Math.random().toString(36)",
+        "level": "serious",
+        "lines": [
+          42
+        ],
+        "text": "Math.random() is not cryptographically secure; use crypto.randomBytes / randomUUID for tokens and secrets.",
+        "truncated": false
+      },
+      "detail": "`const token = Math.random().toString(36)`",
+      "file": "src/legacy/query05.ts",
+      "inDiff": true,
+      "kind": "security-new",
+      "line": 42,
+      "severity": "serious",
+      "title": "**serious** — Math.random() is not cryptographically secure; use crypto.randomBytes / randomUUID for tokens and secrets."
+    },
+    {
+      "data": {
+        "code": "db.query(\"SELECT * FROM orders WHERE \" + filter)",
+        "level": "serious",
+        "lines": [
+          12
+        ],
+        "text": "SQL is built by inserting values into the query text, which allows SQL injection. Pass the values as query parameters instead.",
+        "truncated": true
+      },
+      "detail": "may be pre-existing: isobar truncated the base warning list — `db.query(\"SELECT * FROM orders WHERE \" + filter)`",
+      "file": "src/reports/export.ts",
+      "inDiff": true,
+      "kind": "security-new",
+      "line": 12,
+      "severity": "medium",
+      "title": "**serious** — SQL is built by inserting values into the query text, which allows SQL injection. Pass the values as query parameters instead."
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 2,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 2,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [
+    {
+      "file": "src/legacy/query05.ts",
+      "line": 10,
+      "text": "serious: SQL is built by inserting values into the query text, which allows SQL injection. Pass the values as query parameters instead."
+    },
+    {
+      "file": "src/legacy/query05.ts",
+      "line": 20,
+      "text": "serious: TLS certificate checks are turned off for this connection (rejectUnauthorized: false), so it can be intercepted."
+    }
+  ],
+  "summary": [
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "2 / 0",
+      "delta": "+2 / 0",
+      "head": "4 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}

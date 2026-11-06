@@ -1,0 +1,90 @@
+{
+  "findings": [
+    {
+      "advice": "Copy `src/utils/formatDate.ts` instead.",
+      "data": {
+        "example": "src/utils/formatDate.ts",
+        "follow": 900,
+        "patternId": "naming:camel",
+        "rule": "Utils use camelCase file names: 900 of 940.",
+        "strength": "rule",
+        "total": 940,
+        "truncated": false
+      },
+      "detail": "breaks it.",
+      "file": "src/legacy/aaa.ts",
+      "inDiff": true,
+      "kind": "convention-broken",
+      "severity": "medium",
+      "title": "**Utils use camelCase file names** (900 of 940 follow it)"
+    },
+    {
+      "advice": "Copy `src/utils/formatDate.ts` instead.",
+      "data": {
+        "example": "src/utils/formatDate.ts",
+        "follow": 900,
+        "patternId": "naming:camel",
+        "rule": "Utils use camelCase file names: 900 of 940.",
+        "strength": "rule",
+        "total": 940,
+        "truncated": true
+      },
+      "detail": "breaks it (may be pre-existing: isobar truncated the base exception list).",
+      "file": "src/zz/New_Thing.ts",
+      "inDiff": true,
+      "kind": "convention-broken",
+      "severity": "low",
+      "title": "**Utils use camelCase file names** (900 of 940 follow it)"
+    }
+  ],
+  "gate": "pass",
+  "meta": {
+    "analyzedChangedFiles": 2,
+    "baseRef": "main",
+    "baseSha": "b000000",
+    "changedFiles": 2,
+    "configChanged": false,
+    "headSha": "h000000",
+    "httpActive": false,
+    "toolVersion": "0.7.1",
+    "truncated": false
+  },
+  "preExisting": [],
+  "summary": [
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cognitive",
+      "label": "Cognitive complexity"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "over-limit",
+      "label": "Functions over a limit"
+    },
+    {
+      "base": 0,
+      "delta": "+2",
+      "head": 2,
+      "key": "convention-exceptions",
+      "label": "Convention exceptions"
+    },
+    {
+      "base": "0 / 0",
+      "delta": "0 / 0",
+      "head": "0 / 0",
+      "key": "security",
+      "label": "Security warnings serious / advisory"
+    },
+    {
+      "base": 0,
+      "delta": "0",
+      "head": 0,
+      "key": "cycles",
+      "label": "Circular imports"
+    }
+  ]
+}
