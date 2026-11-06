@@ -53,7 +53,7 @@ Outputs: `gate` (`pass` or `fail`), `summary` (the one-line headline), `report-j
 
 ## Demo
 
-[isobar-pr-demo](https://github.com/sbinhamid-mercans/isobar-pr-demo) is a small Express + React app with a seeded history that runs this action with `fail-on: serious-security`. Its [`demo/regression` pull request](<PR-URL>) plants six changes, one for each of six report sections (limit crossed, hotspot touched, convention broken, new security warning, HTTP contract, improved), and the new security warning fails the gate. Its `demo/clean` pull request changes one label and gets the one-line comment.
+[isobar-pr-demo](https://github.com/sbinhamid-mercans/isobar-pr-demo) is a small Express + React app with a seeded history that runs this action with `fail-on: serious-security`. Its [`demo/regression` pull request](https://github.com/sbinhamid-mercans/isobar-pr-demo/pull/1) plants six changes, one for each of six report sections (limit crossed, hotspot touched, convention broken, new security warning, HTTP contract, improved), and the new security warning fails the gate. Its [`demo/clean` pull request](https://github.com/sbinhamid-mercans/isobar-pr-demo/pull/2) changes one label and gets the one-line comment.
 
 ## On your laptop
 
